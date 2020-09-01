@@ -13,10 +13,10 @@ export default class Home extends Component {
     
   }
   render(props) {
-    const { navigation } = this.props;
     return (
      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text style={{fontSize:30}}>Home</Text>
+        <Text style={{fontSize:30}}>Home</Text>
+        <Button title="Go to Notification"/>
     </View>
     );
   }
