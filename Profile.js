@@ -11,11 +11,10 @@ export default class Profile extends Component {
     };
   }
   render(props) {
-    const { navigation } = this.props;
     return (
      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text style={{fontSize:30}}>Profile</Text>
-      
+      <Button title="Go to Home"/>
     </View>
     );
   }
