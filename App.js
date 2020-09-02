@@ -13,6 +13,8 @@ import Home from './Home'
 import Profile from './Profile'
 import Notifications from './Notifications'
 
+import {createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem} from '@react-navigation/drawer'
+
 const HomeScreen=()=>{
   const navigation = useNavigation();
   return(
@@ -70,22 +72,52 @@ function MyBottomTab(){
         name="Home" 
         component={HomeScreen}/>
 
-
       <BottomTab.Screen
         options={{
           tabBarIcon:({color})=>(<Ionicons name="md-person" size={24} color={color} />)
         }} 
         name="Profile" 
         component={ProfileScreen}/>
+
       <BottomTab.Screen name="Notifications" component={NotificationsScreen}/>
+
+
     </BottomTab.Navigator>
   );
 }
 
+
+const Drawer = createDrawerNavigator();
+function MyDrawer(){
+  return(
+    <Drawer.Navigator drawerContent={props=><CustomDrawerContent {...props}/>}>
+      <Drawer.Screen 
+        options={{
+          drawerIcon:({color})=>(<Entypo name="home" size={24} color={color} />)
+        }} 
+        name="Home" 
+        component={HomeScreen}/>
+      <Drawer.Screen name="Profile" component={ProfileScreen}/>
+      <Drawer.Screen name="Notifications" component={NotificationsScreen}/>
+    </Drawer.Navigator>
+  );
+}
+
+const CustomDrawerContent=(props)=>{
+  return(
+    <DrawerContentScrollView {...props}>
+      <Text>Hello</Text>
+      <Entypo name="home" size={24} color="red" />
+      <DrawerItemList {...props}/>
+    </DrawerContentScrollView>
+  );
+}
+
+
 export default function App() {
   return (
     <NavigationContainer>
-      <MyBottomTab/>
+      <MyDrawer/>
     </NavigationContainer>
   );
 }
